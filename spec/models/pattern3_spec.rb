@@ -13,6 +13,7 @@ class Pattern3Child < ApplicationRecord
   def check_child_count
     if pattern3.pattern3_children.count > 3
       errors.add(:base, "子は3つ以上は作れません")
+      raise ActiveRecord::RecordInvalid.new(self)
     end
   end
 end
@@ -26,20 +27,21 @@ RSpec.describe Pattern3, type: :model do
       pattern3.pattern3_children.create!
     end
 
-    it "create! 3個以内なので追加できない事（でも追加される）" do
-      pattern3.pattern3_children.create!
+    it "create! 3個以内なので追加できない事" do
+      expect { pattern3.pattern3_children.create! }.to raise_error ActiveRecord::RecordInvalid
       expect(pattern3.pattern3_children.count).to eq 3
     end
 
     it "create 3個以内なので追加できない事（でも追加される）" do
       child = pattern3.pattern3_children.create
-      expect(child).not_to be_valid
+      expect(child).not_to be_valid # valid
       expect(pattern3.pattern3_children.count).to eq 3
     end
 
     it "new and saveはバリデーションエラーになること" do
       child = pattern3.pattern3_children.new
-      expect(child).not_to be_valid
+      expect(child).not_to be_valid # valid
+      expect(pattern3.pattern3_children.count).to eq 3
     end
 
     it "子が更新できる事" do

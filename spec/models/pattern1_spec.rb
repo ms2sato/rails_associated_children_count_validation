@@ -26,6 +26,11 @@ RSpec.describe Pattern1, type: :model do
       pattern1.pattern1_children.create!
     end
 
+    it "create! 3個以内なので追加できない事（でも追加できてしまう）" do
+      expect { pattern1.pattern1_children.create! }.to raise_error ActiveRecord::RecordInvalid # raise されない
+      expect(pattern1.pattern1_children.count).to eq 3
+    end
+
     it "create 3個以内なので追加できない事（でも追加できてしまう）" do
       child = pattern1.pattern1_children.create
       expect(child).not_to be_valid # これはinvalidなのに

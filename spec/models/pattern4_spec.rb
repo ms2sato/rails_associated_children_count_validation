@@ -18,7 +18,7 @@ class Pattern4Child < ApplicationRecord
 end
 
 RSpec.describe Pattern4, type: :model do
-  describe "子の方にafter_save内でcountチェック" do
+  describe "子の方にvalidate内でcountチェック" do
     let(:pattern4) { Pattern4.create! }
     before do
       pattern4.pattern4_children.create!

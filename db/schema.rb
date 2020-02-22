@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_105923) do
+ActiveRecord::Schema.define(version: 2020_02_22_114549) do
 
   create_table "pattern1_children", force: :cascade do |t|
     t.string "title"
@@ -64,7 +64,18 @@ ActiveRecord::Schema.define(version: 2020_02_22_105923) do
     t.string "title"
   end
 
+  create_table "pattern5_children", force: :cascade do |t|
+    t.string "title"
+    t.integer "pattern5_id", null: false
+    t.index ["pattern5_id"], name: "index_pattern5_children_on_pattern5_id"
+  end
+
+  create_table "pattern5s", force: :cascade do |t|
+    t.string "title"
+  end
+
   add_foreign_key "pattern2_children", "pattern2s"
   add_foreign_key "pattern3_children", "pattern3s"
   add_foreign_key "pattern4_children", "pattern4s"
+  add_foreign_key "pattern5_children", "pattern5s"
 end
