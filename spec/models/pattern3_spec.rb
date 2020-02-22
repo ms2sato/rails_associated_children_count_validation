@@ -34,13 +34,13 @@ RSpec.describe Pattern3, type: :model do
 
     it "create 3個以内なので追加できない事（でも追加される）" do
       child = pattern3.pattern3_children.create
-      expect(child).not_to be_valid # valid
+      expect(child).not_to be_valid # validになる
       expect(pattern3.pattern3_children.count).to eq 3
     end
 
     it "new and saveはバリデーションエラーになること" do
       child = pattern3.pattern3_children.new
-      expect(child).not_to be_valid # valid
+      expect(child).not_to be_valid # validになる
       expect(pattern3.pattern3_children.count).to eq 3
     end
 

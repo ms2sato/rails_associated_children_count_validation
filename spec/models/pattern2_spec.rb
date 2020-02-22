@@ -20,14 +20,14 @@ RSpec.describe Pattern2, type: :model do
     end
 
     it "create! 3個以内なので追加できない事（でも追加される）" do
-      pattern2.pattern2_children.create!
+      expect { pattern2.pattern2_children.create! }.to raise_error ActiveRecord::RecordInvalid # raise されない
       expect(pattern2.pattern2_children.count).to eq 3
     end
 
     it "create 3個以内なので追加できない事（でも追加される）" do
       child = pattern2.pattern2_children.create
       expect(child).not_to be_valid #ここは invalid
-      expect(pattern2.pattern2_children.count).to eq 3
+      expect(pattern2.pattern2_children.count).to eq 3 # 4になってしまう
     end
 
     it "new and saveはバリデーションエラーになること" do

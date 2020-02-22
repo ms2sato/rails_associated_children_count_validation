@@ -6,21 +6,12 @@ end
 
 class Pattern5Child < ApplicationRecord
   belongs_to :pattern5
-  validate :check_child_count_for_create, on: :create
-  validate :check_child_count_for_update, on: :update
+  validate :check_child_count
 
   private
 
-  # えー...二つも作らないとダメ？
-
-  def check_child_count_for_create
-    if pattern5.pattern5_children.count > 2
-      errors.add(:base, "子は3つ以上は作れません")
-    end
-  end
-
-  def check_child_count_for_update
-    if pattern5.pattern5_children.count > 3
+  def check_child_count
+    if pattern5.pattern5_children.where.not(id: id).count > 2
       errors.add(:base, "子は3つ以上は作れません")
     end
   end
