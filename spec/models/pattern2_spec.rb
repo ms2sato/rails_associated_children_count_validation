@@ -11,7 +11,7 @@ class Pattern2Child < ApplicationRecord
 end
 
 RSpec.describe Pattern2, type: :model do
-  describe "親にlength指定して、子にvalidates_associated" do
+  describe "親にvalidatesでlength指定して、子にvalidates_associated" do
     let(:pattern2) { Pattern2.create! }
     before do
       pattern2.pattern2_children.create!

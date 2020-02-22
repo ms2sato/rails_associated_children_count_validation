@@ -1,24 +1,14 @@
-# README
+# アソシエーションした子モデルの数を限定する方法の模索
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+全てSpecで書いてあります。bundle install してマイグレーションしたら
 
-Things you may want to cover:
+```
+bundle exec rspec
+```
 
-* Ruby version
+で全部テストできるはずです。
 
-* System dependencies
+1 〜 4はそれぞれありそうな実装を試しています。それぞれテストレッドになります。
+5は弊社のメンバーがよく書いている形で、自分も改めて試行錯誤した結果これで良いかなと思うのですが、あまり見かけない書き方なのでもっと良い方法があるのであれば知りたいです。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+例えば初学者の人に「こうすると良いよ」と教える場合のお手本になるようなコードがあればぜひ知りたいです。
