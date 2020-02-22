@@ -12,7 +12,7 @@ class Pattern3Child < ApplicationRecord
 
   def check_child_count
     if pattern3.pattern3_children.count > 3
-      errors.add(:base, "子は3つ以上は作れません")
+      errors.add(:base, "子の数は3つ以下です")
       raise ActiveRecord::RecordInvalid.new(self)
     end
   end

@@ -12,7 +12,7 @@ class Pattern5Child < ApplicationRecord
 
   def check_child_count
     if pattern5.pattern5_children.where.not(id: id).count > 2
-      errors.add(:base, "子は3つ以上は作れません")
+      errors.add(:base, "子の数は3つ以下です")
     end
   end
 end
