@@ -1,4 +1,4 @@
-# アソシエーションした子モデルの数を限定する方法の模索
+# アソシエーションした子モデルの数をバリデーションする方法の模索
 
 全てSpecで書いてあります( https://github.com/ms2sato/rails_associated_children_count_validation/tree/master/spec/models )。
 
